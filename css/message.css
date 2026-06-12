@@ -1,0 +1,78 @@
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height: 1.8;
+  background-color: #fff7f0;
+  margin: 0;
+  color: #5a4a42;
+}
+.title{
+  background-image: url(../img/photos/renai.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 80px 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: #5a4a42;
+  position: relative;
+}
+.title::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,240,230,0.5);
+  border-radius: 10px;
+}
+.title h1,.title h2{
+  position: relative;
+  z-index: 1;
+}
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px 0;
+  background-color: #fff7f0;
+  border-bottom: 1px solid #EADFD8;
+}
+.navbar a {
+  text-decoration: none;
+  color: #5A4A42;
+  font-size: 16px;
+  position: relative;
+}
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: #F2C6A0;
+  transition: 0.3s;
+}
+.navbar a:hover::after {
+  width: 100%;
+}
+.navbar a.active{
+  color: #d98c5f;
+}
+.site-footer{
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 60px;
+  border-top: 1px solid #EADFD8;
+}
+.footer-line{
+  font-size: 14px;
+  color: #8c7a70;
+  margin-bottom: 10px;
+}
+.footer-copy{
+  font-size: 12px;
+  color: #b0a39a;
+}
+main{
+  text-align: center;
+  color: #5a4a42;
+}

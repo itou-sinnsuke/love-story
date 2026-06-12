@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>藏宝箱</title>
+  <link rel="stylesheet" href="../css/items.css">
+  <script src="../js/app.js" defer></script>
+</head>
+<body>
+<header>
+  <div class="title">
+    <h1>这是属于我们的故事</h1>
+    <h2>我们相识于2018年10月3日，距今已经<span id="love-days"></span>天啦！</h2>
+  </div>
+</header>
+<nav class="navbar">
+  <a href="../index.html">首页</a>
+  <a href="photos.html">照片库</a>
+  <a href="items.html" class="active">藏宝箱</a>
+  <a href="message.html">留言板</a>
+</nav>
+<main>
+  <div class="inventory">
+    <div class="item rare" data-title="机票" data-desc="我们第一次见面的证明">
+      <img src="../img/things/ticket.jpg">
+    </div>
+    <div class="item legend" data-title="文创品" data-desc="我爱人给我带的礼物">
+      <img src="../img/things/wenchuang.jpg">
+    </div>
+    <div class="item legend" data-title="明信片" data-desc="我爱人给我带来的明信片，每一张都有她排队给我盖的邮戳">
+      <img src="../img/things/hagaki.jpg">
+    </div>
+  </div>
+  <!-- 弹窗 -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p >
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <p class="footer-line">
+    这些故事，只属于我们
+  </p>
+  <p class="footer-copy">
+    &copy;2026 王远志<br>本网站持续更新中
+  </p>
+</footer>
+</body>
+</html>
