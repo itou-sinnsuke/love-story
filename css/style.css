@@ -135,6 +135,112 @@ body{
   font-size: 12px;
   color: #b0a39a;
 }
+.loader {
+  margin: 0;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg,#f6fff8,#e9fff1);
+  transition: opacity 0.5s ease;
+  z-index: 9999;
+}
+.loader .cat {
+  position: relative;
+  width: 80px;
+  height: 60px;
+  background-color: #333;
+  /* 猫の色（黒猫） */
+  border-radius: 50% 50% 40% 40%;
+  /* 少し丸みのある形 */
+  animation: walk 0.6s infinite alternate ease-in-out;
+}
+
+/* 猫の耳（左耳と右耳を擬似要素で表現） */
+.loader .cat::before,
+.loader .cat::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid #333;
+  /* 耳の色 */
+}
+
+.loader .cat::before {
+  left: 5px;
+  transform: rotate(-10deg);
+}
+
+.loader .cat::after {
+  right: 5px;
+  transform: rotate(10deg);
+}
+.loading-text {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  background: linear-gradient(90deg,#00bcd4,#3f51b5,#00bcd4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 2s infinite linear;
+}
+.bar {
+  width: 200px;
+  height: 8px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg,#00bcd4,#3f51b5);
+}
+main {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.6s ease;
+}
+body.loaded main {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes walk {
+  0% {
+    transform: translateY(0) scaleY(1);
+  }
+
+  100% {
+    transform: translateY(-15px) scaleY(0.9);
+    /* 上に浮き上がりつつ、少し潰れる */
+  }
+}
+@keyframes shimmer {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+@keyframes loadingBar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
 @media (max-width: 600px) {
   .timeline::before {
     left: 20px;
