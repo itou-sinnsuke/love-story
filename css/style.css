@@ -254,6 +254,13 @@ body.loaded main {
     left: 0;
   }
   .timeline-item::after {
-    left: 12px;
+    left: 12px !important;
+    right: auto;
+  }
+  .timeline-content h3{
+    word-break: keep-all;
+  }
+  .timeline-content{
+    grid-template-columns: 1fr;
   }
 }
