@@ -5,15 +5,6 @@ body{
   margin: 0;
   color: #5a4a42;
 }
-.BOX{
-  width: 800px;
-  margin:40px auto;
-  background-color: #FFFFFF;
-  padding: 25px;
-  border: 1px solid #EADFD8;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
 .title{
   background-image: url("../img/photos/renai.jpg");
   background-size: contain;
@@ -36,59 +27,193 @@ body{
   position: relative;
   z-index: 1;
 }
+/* ===== 时间轴容器 ===== */
 .timeline {
   position: relative;
   max-width: 900px;
-  margin: 50px auto;
+  margin: 60px auto;
+  padding: 0 20px;
 }
+
+/* 渐变竖线 */
 .timeline::before {
   content: "";
   position: absolute;
-  width: 4px;
-  background: #F2C6A0;
+  width: 3px;
+  background: linear-gradient(to bottom, #f9d4c0, #e8829a, #c084a8, #e8829a, #f9d4c0);
   top: 0;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(232, 130, 154, 0.4);
 }
+
+/* ===== 每条时间轴条目 ===== */
 .timeline-item {
   position: relative;
   width: 50%;
   padding: 20px 0;
+  /* 初始状态：不可见，等待入场动画 */
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.timeline-item:nth-child(even) {
+  left: 50%;
+  transform: translateX(40px);
 }
 .timeline-item:nth-child(odd) {
   left: 0;
   text-align: right;
+  transform: translateX(-40px);
 }
-.timeline-item:nth-child(even) {
-  left: 50%;
+
+/* 入场后的状态（JS 添加 .visible） */
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
+
+/* ===== 卡片：玻璃拟态 ===== */
 .timeline-content {
-  background: #FFFFFF;
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid #EADFD8;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 22px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 24px rgba(180, 100, 120, 0.1), 0 2px 6px rgba(0,0,0,0.04);
   margin: 0 40px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.timeline-content:hover {
+  box-shadow: 0 12px 32px rgba(180, 100, 120, 0.18), 0 4px 10px rgba(0,0,0,0.06);
+  transform: translateY(-3px);
 }
 .timeline-content img {
   width: 100%;
   border-radius: 10px;
   margin-top: 10px;
 }
+
+/* ===== 章节阶段标签 ===== */
+.timeline-content h3 {
+  font-size: 14px;
+  color: #fff;
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+/* 每章不同颜色 */
+.timeline-item:nth-child(1) .timeline-content h3 { background: linear-gradient(135deg, #f9a8c0, #f06292); }
+.timeline-item:nth-child(2) .timeline-content h3 { background: linear-gradient(135deg, #b0c4de, #7986cb); }
+.timeline-item:nth-child(3) .timeline-content h3 { background: linear-gradient(135deg, #a5d6e8, #4fc3f7); }
+.timeline-item:nth-child(4) .timeline-content h3 { background: linear-gradient(135deg, #ffc97a, #e8829a); }
+
+.timeline-content h4 {
+  font-size: 17px;
+  color: #5a4a42;
+  margin: 0 0 10px;
+}
+.timeline-content p {
+  font-size: 14px;
+  color: #7a6a62;
+  margin-bottom: 14px;
+}
+
+/* ===== 链接改为胶囊按钮 ===== */
+.timeline-content a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 13px;
+  color: #c0546e;
+  border: 1px solid #f2aabb;
+  padding: 5px 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.7);
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+.timeline-content a:hover {
+  background: #f06292;
+  color: #fff;
+  border-color: #f06292;
+}
+
+/* ===== 心形节点 ===== */
 .timeline-item::after {
-  content: "";
+  content: "♥";
   position: absolute;
-  width: 16px;
-  height: 16px;
-  background: #F2C6A0;
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+  line-height: 28px;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg, #f9a8c0, #e8829a);
   border-radius: 50%;
-  top: 30px;
-  right: -8px;
-  z-index: 1;
+  top: 26px;
+  right: -14px;
+  z-index: 2;
+  box-shadow: 0 0 0 4px rgba(242, 130, 154, 0.2);
+  animation: heartbeat 1.8s infinite ease-in-out;
 }
 .timeline-item:nth-child(even)::after {
-  left: -8px;
+  left: -14px;
+  right: auto;
+}
+
+/* 节点到卡片的横向连接线 */
+.timeline-item:nth-child(odd)::before {
+  content: "";
+  position: absolute;
+  top: 38px;
+  right: 26px;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(to left, rgba(242,130,154,0), #f2a0b8);
+}
+.timeline-item:nth-child(even)::before {
+  content: "";
+  position: absolute;
+  top: 38px;
+  left: 26px;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(to right, rgba(242,130,154,0), #f2a0b8);
+}
+
+/* ===== 心跳动画 ===== */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 4px rgba(242, 130, 154, 0.2); }
+  50% { transform: scale(1.18); box-shadow: 0 0 0 7px rgba(242, 130, 154, 0.1); }
+}
+
+/* ===== 移动端适配 ===== */
+@media (max-width: 600px) {
+  .timeline::before { left: 20px; }
+  .timeline-item,
+  .timeline-item:nth-child(even),
+  .timeline-item:nth-child(odd) {
+    width: 100%;
+    left: 0;
+    text-align: left;
+    padding-left: 50px;
+    padding-right: 10px;
+    transform: translateX(-30px);
+  }
+  .timeline-item.visible { transform: translateX(0); }
+  .timeline-item::after,
+  .timeline-item:nth-child(even)::after {
+    left: 6px !important;
+    right: auto;
+  }
+  .timeline-item::before,
+  .timeline-item:nth-child(even)::before { display: none; }
+  .timeline-content { margin: 0 0 0 10px; }
+  .timeline-content h3 { font-size: 12px; }
 }
 .navbar {
   display: flex;
@@ -239,28 +364,5 @@ body.loaded main {
   }
   to {
     width: 100%;
-  }
-}
-@media (max-width: 600px) {
-  .timeline::before {
-    left: 20px;
-  }
-  .timeline-item {
-    width: 100%;
-    padding-left: 50px;
-    padding-right: 20px;
-  }
-  .timeline-item:nth-child(even) {
-    left: 0;
-  }
-  .timeline-item::after {
-    left: 12px !important;
-    right: auto;
-  }
-  .timeline-content h3{
-    word-break: keep-all;
-  }
-  .timeline-content{
-    grid-template-columns: 1fr;
   }
 }
