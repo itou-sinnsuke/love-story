@@ -23,22 +23,31 @@
   <a href="message.html">留言板</a>
 </nav>
 <main>
-  <div class="inventory">
-    <div class="item rare" data-title="机票" data-desc="我们第一次见面的证明">
-      <img src="../img/things/ticket.jpg">
-    </div>
-    <div class="item legend" data-title="文创品" data-desc="我爱人给我带的礼物">
-      <img src="../img/things/wenchuang.jpg">
-    </div>
-    <div class="item legend" data-title="明信片" data-desc="我爱人给我带来的明信片，每一张都有她排队给我盖的邮戳">
-      <img src="../img/things/hagaki.jpg">
+  <div class="cabinet">
+    <div class="cabinet-label">— 我们的珍藏 —</div>
+    <div class="inventory">
+      <div class="item rare" data-title="机票" data-desc="我们第一次见面的证明">
+        <img src="../img/things/ticket.jpg" alt="机票">
+        <span class="item-name">机票</span>
+      </div>
+      <div class="item legend" data-title="文创品" data-desc="我爱人给我带的礼物">
+        <img src="../img/things/wenchuang.jpg" alt="文创品">
+        <span class="item-name">文创品</span>
+      </div>
+      <div class="item legend" data-title="明信片" data-desc="我爱人给我带来的明信片，每一张都有她排队给我盖的邮戳">
+        <img src="../img/things/hagaki.jpg" alt="明信片">
+        <span class="item-name">明信片</span>
+      </div>
     </div>
   </div>
+
   <!-- 弹窗 -->
   <div class="modal" id="modal">
     <div class="modal-content">
+      <button class="modal-close" id="modal-close">×</button>
+      <img id="modal-img" src="" alt="">
       <h2 id="modal-title"></h2>
-      <p id="modal-desc"></p >
+      <p id="modal-desc"></p>
     </div>
   </div>
 </main>
