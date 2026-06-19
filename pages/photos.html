@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../css/photo.css">
   <link rel="icon" href="../img/icons/icon.png">
   <script src="../js/love-days.js" defer></script>
+  <script src="../js/photos.js" defer></script>
 </head>
 <body>
 <header>
@@ -22,9 +23,35 @@
   <a href="message.html">留言板</a>
 </nav>
 <main>
-  <h1>照片？不行不行，我爱人不许我把照片挂出来。</h1>
-  <img src="../img/icons/wu.jpg">
+  <div class="wall-header">
+    <h2 class="wall-title">我们的时光</h2>
+    <p class="wall-sub">每一张照片，都是我们故事的注脚</p>
+  </div>
+  <div class="photo-wall" id="photo-wall"></div>
 </main>
+
+<!-- 灯箱 -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lb-close">×</button>
+  <div class="lb-inner">
+    <div class="lb-img-wrap">
+      <img id="lb-img" src="" alt="">
+    </div>
+    <div class="lb-detail">
+      <div class="lb-tag" id="lb-tag"></div>
+      <h3 id="lb-title"></h3>
+      <ul class="lb-meta">
+        <li id="lb-date-row"><span class="meta-icon">📅</span><span id="lb-date"></span></li>
+        <li id="lb-loc-row"><span class="meta-icon">📍</span><span id="lb-loc"></span></li>
+      </ul>
+      <p id="lb-desc"></p>
+      <div class="lb-nav">
+        <button id="lb-prev">&#8592; 上一张</button>
+        <button id="lb-next">下一张 &#8594;</button>
+      </div>
+    </div>
+  </div>
+</div>
 <footer class="site-footer">
   <p class="footer-line">
     这些故事，只属于我们
